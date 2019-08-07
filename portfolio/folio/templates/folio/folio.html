@@ -1,0 +1,15 @@
+{% extends "folio/base.html" %}
+
+{% block title %}
+Portfolio - {{ entry.headline }}
+{% endblock %}
+
+{% block body %}
+{% autoescape off %}
+<h2>{{ entry.headline }}</h2>
+{{ entry.body }}
+{% endautoescape %}
+{% endblock %}
+
+
+

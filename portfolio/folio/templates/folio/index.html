@@ -1,7 +1,7 @@
 {% extends "folio/base.html" %}
 
 {% block title %}
-INDEX-TODO
+Jefferson Maldonado
 {% endblock %}
 
 {% block body %}
@@ -13,7 +13,7 @@ INDEX-TODO
         {% for entry in portfolio_entries %}
         <div class="col mb-4">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ entry.picture_url }}" alt="Card image cap">
+                <a href="{% url 'folio' entry.pk %}"><img class="card-img-top" src="{{ entry.picture_url }}" alt="{{ entry.headline }}"></a>
                 <div class="card-body">
                     <p class="card-text">{{ entry.headline }}</p>
                     <p class="small m-0">Tags: #{{ entry.category }}</p>
