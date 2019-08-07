@@ -9,45 +9,19 @@ INDEX-TODO
 
 <h2>Portfolio:</h2>
 <div class="container">
-<div class="row justify-content-md-center">
-    <div class="col mb-4">
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="https://placeimg.com/360/360/arch" alt="Card image cap">
-            <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                    <p class="small m-0">Tags: #tag #tag #tag #tag</p>
+    <div class="row justify-content-md-center">
+        {% for entry in portfolio_entries %}
+        <div class="col mb-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ entry.picture_url }}" alt="Card image cap">
+                <div class="card-body">
+                    <p class="card-text">{{ entry.headline }}</p>
+                    <p class="small m-0">Tags: #{{ entry.category }}</p>
+                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    <div class="col mb-4">
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="https://placeimg.com/360/360/arch" alt="Card image cap">
-            <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col mb-4">
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="https://placeimg.com/360/360/arch" alt="Card image cap">
-            <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col mb-4">
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="https://placeimg.com/360/360/arch" alt="Card image cap">
-            <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-            </div>
-        </div>
-    </div>
-</div>
 </div>
 
 {% endblock %}

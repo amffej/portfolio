@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from . models import PortfolioEntry
 
 
 def index(request):
     context = {
-        "blank": "none"
+        "portfolio_entries": PortfolioEntry.objects.all()
     }
     return render(request, "folio/index.html", context)
 
