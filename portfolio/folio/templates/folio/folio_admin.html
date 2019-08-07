@@ -1,0 +1,46 @@
+{% extends "folio/base.html" %}
+
+{% block title %}
+Portfolio Admin
+{% endblock %}
+
+{% block body %}
+{% autoescape off %}
+    <script>
+    /* 
+      $('#summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 100
+      });*/
+
+      var edit = function() {
+  $('.page_body').summernote({focus: true});
+};
+
+$(document).ready(function() {  
+$("#save").click(function(){
+  var data = {html:$('.page_body').summernote('code')};
+  var csrftoken = '{{ csrf_token }}';
+  const url = '';
+  $.ajax({
+    headers: { "X-CSRFToken": csrftoken },
+      url: url,
+      type: "POST",
+      data: data,
+      dataType: "HTML"})
+  $('.page_body').summernote('destroy');
+});
+});
+</script>   
+<div class="page_body">{{ entry.body }}</div>
+
+{% if request.user.is_staff %}
+<button id="edit" class="btn btn-secondary" onclick="edit()" type="button">Edit</button>
+<button id="save" class="btn btn-secondary" type="button">Save</button>
+{% endif %}
+{% endautoescape %}
+{% endblock %}
+
+
+

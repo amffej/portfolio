@@ -32,5 +32,15 @@ def about(request):
     }
     return render(request, "folio/about.html", context)
 
-def admin(request):
-    return HttpResponse("Admin Page")
+def admin(request, item_id):
+    if request.method == "POST":
+        markup = request.POST.get("html")
+        print(markup) #TODO
+    try:
+        entry = PortfolioEntry.objects.get(pk=item_id)
+    except entry.DoesNotExist:
+        raise Http404("Entree does not exist")
+    context = {
+        "entry": entry
+    }
+    return render(request, "folio/folio_admin.html", context)
