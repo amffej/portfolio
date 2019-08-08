@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 
 {% block title %}
-Portfolio - {{ entry.headline }}
+Portfolio - {{ entry.title }}
 {% endblock %}
 
 {% block body %}
 {% autoescape off %}
-<h2>{{ entry.headline }}</h2>
+<h2>{{ entry.title }}</h2>
 {{ entry.body }}
+{{ entry.pub_date }}
+{{ entry.category }}
 {% endautoescape %}
 {% endblock %}
 
