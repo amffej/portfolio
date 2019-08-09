@@ -15,8 +15,7 @@ Portfolio - {{ entry.headline }}
   };
   var save = function (section, model) {
     $(document).ready(function () {
-      var data = { html: $(section).summernote('code'), item_id: {{ entry.pk }
-    }, model: model };
+      var data = { html: $(section).summernote('code'), item_id: {{ entry.pk }}, model: model };
   var csrftoken = '{{ csrf_token }}';
   const url = '';
   $.ajax({

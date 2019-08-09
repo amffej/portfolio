@@ -35,6 +35,12 @@ a, a:hover, a:focus {
 
 /* Sidebar Styling */
 
+.avatar {
+    border-radius: 50%;
+    width: 100px;  
+    object-fit: contain; 
+  }
+
 .wrapper {
     display: flex;
     width: 100%;
@@ -111,7 +117,7 @@ a.article, a.article:hover {
 }
 
 .contact-icons a:hover{
-    color: #cec6ff !important;
+    color: #9b8dfa !important;
 }
 
 /*Content Styling*/
