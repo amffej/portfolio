@@ -7,21 +7,26 @@ Jefferson Maldonado
 {% block body %}
 
 
-<h2>Portfolio:</h2>
+<h2>Blog:</h2>
 <div class="container">
-    <div class="row justify-content-md-center">
-        {% for entry in blog_entries %}
-        <div class="col mb-4">
-            <div class="card" style="width: 18rem;">
-                <a href="{% url 'folio' entry.pk %}"><img class="card-img-top" src="{{ entry.picture_url }}" alt="{{ entry.headline }}"></a>
-                <div class="card-body">
-                    <p class="card-text">{{ entry.title }}</p>
-                    <p class="small m-0">Tags: #{{ entry.category }}</p>
-                </div>
+    {% for entry in blog_entries %}
+        {% if entry.published or request.user.is_staff %}
+        <div class="row">
+            <div class="col-md-auto">
+                <a href="{% url 'blog' entry.pk %}"><img class="" src="{{ entry.thumbnail_url }}"
+                        alt="{{ entry.title }}"></a>
             </div>
+            <div class="col">
+                <h3><a href="{% url 'blog' entry.pk %}">{{ entry.title }}</a></h3>
+                <p>{{ entry.summary }}<a href="{% url 'blog' entry.pk %}"> ... read more</a></p> 
+            </div>
+            {% if request.user.is_staff %}
+            Published: {{ entry.published }}
+            {% endif %}
+            <div class="line"></div>
         </div>
-        {% endfor %}
-    </div>
+        {% endif %}
+    {% endfor %}
 </div>
 
 {% endblock %}

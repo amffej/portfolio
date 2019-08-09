@@ -9,7 +9,24 @@ def index(request):
     }
     return render(request, "folio/index.html", context)
 
+
+    
 def folio(request, item_id):
+    if request.method == "POST":
+        markup = request.POST.get("html")
+        item_id = request.POST.get("item_id")
+        model = request.POST.get("model")
+        entry_data = PortfolioEntry.objects.get(pk=item_id)
+        if model == "body":
+            entry_data.body = markup
+            entry_data.save()
+        if model == "headline":
+            entry_data.headline = markup
+            entry_data.save()
+        if model == "picture_url":
+            entry_data.picture_url = markup
+            entry_data.save()
+        #print(item_id, model) #TODO
     try:
         entry = PortfolioEntry.objects.get(pk=item_id)
     except entry.DoesNotExist:
@@ -32,6 +49,7 @@ def about(request):
     }
     return render(request, "folio/about.html", context)
 
+'''
 def admin(request, item_id):
     if request.method == "POST":
         markup = request.POST.get("html")
@@ -44,3 +62,4 @@ def admin(request, item_id):
         "entry": entry
     }
     return render(request, "folio/folio_admin.html", context)
+'''

@@ -12,7 +12,10 @@ class Category(models.Model):
 class BlogEntry(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
+    thumbnail_url = models.CharField(default=None, blank=True, null=True, max_length=500)
     pub_date = models.DateField()
+    published = models.BooleanField(default=False)
+    summary = models.TextField(default=None, blank=True, null=True)
     body = models.TextField()
 
     def get_absolute_url(self):

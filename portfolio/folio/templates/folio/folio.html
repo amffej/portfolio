@@ -2,14 +2,55 @@
 
 {% block title %}
 Portfolio - {{ entry.headline }}
+
 {% endblock %}
 
 {% block body %}
 {% autoescape off %}
-<h2>{{ entry.headline }}</h2>
-{{ entry.body }}
+
+{% if request.user.is_staff %}
+<script>
+  var edit = function (section) {
+    $(section).summernote({ focus: true });
+  };
+  var save = function (section, model) {
+    $(document).ready(function () {
+      var data = { html: $(section).summernote('code'), item_id: {{ entry.pk }
+    }, model: model };
+  var csrftoken = '{{ csrf_token }}';
+  const url = '';
+  $.ajax({
+    headers: { "X-CSRFToken": csrftoken },
+    url: url,
+    type: "POST",
+    data: data,
+    dataType: "HTML"
+  })
+  $(section).summernote('destroy');
+  });
+};
+</script>
+{% endif %}
+<h2>
+  <div class="page_headline">{{ entry.headline }}</div>
+</h2>
+{% if request.user.is_staff %}
+<button id="edit" class="btn btn-secondary" onclick="edit('.page_headline')" type="button">Edit</button>
+<button id="save" class="btn btn-secondary" onclick="save('.page_headline','headline')" type="button">Save</button>
+{% endif %}
+
+<div class="page_body">{{ entry.body }}</div>
+{% if request.user.is_staff %}
+<button id="edit" class="btn btn-secondary" onclick="edit('.page_body')" type="button">Edit</button>
+<button id="save" class="btn btn-secondary" onclick="save('.page_body','body')" type="button">Save</button>
+<div class = "mt-2">
+  <h6>Thumbnail Picture</h6>
+  <img class="" src="{{ entry.picture_url}}">
+  <div class="page_picture">{{ entry.picture_url}}</div>
+  <button id="edit" class="btn btn-secondary" onclick="edit('.page_picture')" type="button">Edit</button>
+  <button id="save" class="btn btn-secondary" onclick="save('.page_picture','picture_url')" type="button">Save</button>
+</div>
+{% endif %}
+
 {% endautoescape %}
 {% endblock %}
-
-
-
