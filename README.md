@@ -1,21 +1,41 @@
-# Portfolio webpage with personal blog
 
-![Project Image](https://i.ibb.co/CQ2yNY2/folio.png)
+# Portfolio with personal blog
 
-The goal of this project was to create a perfonal portfolio featuring various projects that I have worked on. The webpage should list various projects, allow for a detail page of such projects, a personal blog, as well as easy management of projects and blog posts via an admin interface.
+<p align="center">
+  <img src="https://i.ibb.co/CQ2yNY2/folio.png">
+</p>
 
-### User Information
+The goal of this project was to create a personal portfolio featuring various projects that I have worked on. The web-page should list various projects, allow for a detail page of such projects, a personal blog, as well as easy management of projects and blog posts via an admin interface. Furthermore, the website should be built with the ability to be mobile responsive.
+
+### Framework Information
 
 ```
-username: admin
-password: admin
+Framework: Django
+    username: admin
+    password: admin
+JS: Jquery, Popper, Boostrap, Summernote and custom JS
+CSS: Boostrap 4 and custom CSS
+
 ```
 ### Admin Edits
 
-Website administrator should first log in via the Django login pannel at localhost:8000/admin
+Website administrator should first log in via the Django login panel at localhost:8000/admin.
 Once logged in as admin going back to the home page should enable edit options throughout the website
 
-![Admin Edits](https://i.ibb.co/ZgjW39k/edinoedit.png)
+<p align="center">
+  <img width="460" height="300" src="https://i.ibb.co/ZgjW39k/edinoedit.png">
+</p>
+
+For the inline edits I used `summernote` a simple WYSIWYG Editor. I chose to implement this on the front end via javascript as this give the administrator a more realistic view of the web-page.
+
+<p align="center">
+   <img src="https://i.ibb.co/YWxJDZL/Screenshot-2016-10-18-17-45-04.png" >
+</p>
+
+### Animations
+
+The side navigation animation was adopted from the following tutorial
+https://bootstrapious.com/p/bootstrap-sidebar
 
 ### Folder Structure
 ```
