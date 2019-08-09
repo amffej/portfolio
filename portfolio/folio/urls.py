@@ -5,8 +5,8 @@ from . import views
 urlpatterns = [
     path('', views.index, name='findex'),
     path('portfolio/<int:item_id>', views.folio, name='folio'),
-    path('contact/', views.contact, name='contact'),
-    path('about/', views.about, name='about'),
+    #path('contact/', views.contact, name='contact'),
+    path('about/<int:item_id>', views.about, name='about'),
     #path('fadmin/<int:item_id>', views.admin, name='admin'),
 
 ]

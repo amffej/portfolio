@@ -16,3 +16,10 @@ class PortfolioEntry(models.Model):
 
     def __str__(self):
         return f"{self.headline}"
+
+class AboutEntry(models.Model):
+    title = models.CharField(max_length=100)
+    body = models.TextField()
+    
+    def __str__(self):
+        return f"{self.title}"
