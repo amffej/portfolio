@@ -2,15 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from . models import PortfolioEntry, AboutEntry
 
-
 def index(request):
     context = {
         "portfolio_entries": PortfolioEntry.objects.all()
     }
     return render(request, "folio/index.html", context)
 
-
-    
 def folio(request, item_id):
     if request.method == "POST":
         markup = request.POST.get("html")
@@ -35,7 +32,6 @@ def folio(request, item_id):
     }
     return render(request, "folio/folio.html", context)
 
-
 def about(request, item_id):
     if request.method == "POST":
         markup = request.POST.get("html")
@@ -56,18 +52,3 @@ def about(request, item_id):
         "entry": entry
     }
     return render(request, "folio/about.html", context)
-
-'''
-def admin(request, item_id):
-    if request.method == "POST":
-        markup = request.POST.get("html")
-        print(markup) #TODO
-    try:
-        entry = PortfolioEntry.objects.get(pk=item_id)
-    except entry.DoesNotExist:
-        raise Http404("Entree does not exist")
-    context = {
-        "entry": entry
-    }
-    return render(request, "folio/folio_admin.html", context)
-'''

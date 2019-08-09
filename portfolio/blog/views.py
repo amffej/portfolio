@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from . models import BlogEntry
 
-
 def index(request):
     context = {
         "blog_entries": BlogEntry.objects.all()
@@ -24,7 +23,6 @@ def blog(request, item_id):
         if model == "thumbnail_url":
             entry_data.thumbnail_url = markup
         entry_data.save()
-        #print(item_id, model) #TODO
     try:
         entry = BlogEntry.objects.get(pk=item_id)
     except entry.DoesNotExist:

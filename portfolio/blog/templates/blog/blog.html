@@ -2,14 +2,13 @@
 
 {% block title %}
 Blog - {{ entry.title }}
-
 {% endblock %}
 
 {% block body %}
 {% autoescape off %}
 
 {% if request.user.is_staff %}
-<script>
+<script type="text/javascript">
   var edit = function (section) {
     $(section).summernote({ focus: true });
   };
@@ -31,33 +30,31 @@ Blog - {{ entry.title }}
 </script>
 {% endif %}
 <h2>
-  <div class="page_title">{{ entry.title }}</div>
+   <div class="page_title">{{ entry.title }}</div>
 </h2>
 {% if request.user.is_staff %}
 <button id="edit" class="btn btn-secondary" onclick="edit('.page_title')" type="button">Edit</button>
 <button id="save" class="btn btn-secondary" onclick="save('.page_title','title')" type="button">Save</button>
 {% endif %}
 <h6 clas="small">
-    <div class="page_publish">{{ entry.pub_date }}</div>
+   <div class="page_publish">{{ entry.pub_date }}</div>
 </h6>
 <div class="page_body">{{ entry.body }}</div>
 {% if request.user.is_staff %}
 <button id="edit" class="btn btn-secondary" onclick="edit('.page_body')" type="button">Edit</button>
 <button id="save" class="btn btn-secondary" onclick="save('.page_body','body')" type="button">Save</button>
-
 <div class = "mt-2">
-    <h6>Summary </h6>
-    <div class="page_summary">{{ entry.summary}}</div>
-    <button id="edit" class="btn btn-secondary" onclick="edit('.page_summary')" type="button">Edit</button>
-    <button id="save" class="btn btn-secondary" onclick="save('.page_summary','summary')" type="button">Save</button>
+   <h6>Summary </h6>
+   <div class="page_summary">{{ entry.summary}}</div>
+   <button id="edit" class="btn btn-secondary" onclick="edit('.page_summary')" type="button">Edit</button>
+   <button id="save" class="btn btn-secondary" onclick="save('.page_summary','summary')" type="button">Save</button>
 </div>
-
 <div class = "mt-2">
-  <h6>Thumbnail Picture</h6>
-  <img class="" src="{{ entry.thumbnail_url}}">
-  <div class="page_picture">{{ entry.thumbnail_url}}</div>
-  <button id="edit" class="btn btn-secondary" onclick="edit('.page_picture')" type="button">Edit</button>
-  <button id="save" class="btn btn-secondary" onclick="save('.page_picture','thumbnail_url')" type="button">Save</button>
+   <h6>Thumbnail Picture</h6>
+   <img class="" src="{{ entry.thumbnail_url}}">
+   <div class="page_picture">{{ entry.thumbnail_url}}</div>
+   <button id="edit" class="btn btn-secondary" onclick="edit('.page_picture')" type="button">Edit</button>
+   <button id="save" class="btn btn-secondary" onclick="save('.page_picture','thumbnail_url')" type="button">Save</button>
 </div>
 {% endif %}
 

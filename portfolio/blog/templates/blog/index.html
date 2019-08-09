@@ -9,24 +9,24 @@ Jefferson Maldonado
 
 <h2>Blog:</h2>
 <div class="container">
-    {% for entry in blog_entries %}
-        {% if entry.published or request.user.is_staff %}
-        <div class="row">
-            <div class="col-md-auto">
-                <a href="{% url 'blog' entry.pk %}"><img class="" src="{{ entry.thumbnail_url }}"
-                        alt="{{ entry.title }}"></a>
-            </div>
-            <div class="col">
-                <h3><a href="{% url 'blog' entry.pk %}">{{ entry.title }}</a></h3>
-                <p>{{ entry.summary }}<a href="{% url 'blog' entry.pk %}"> ... read more</a></p> 
-            </div>
-            {% if request.user.is_staff %}
-            Published: {{ entry.published }}
-            {% endif %}
-            <div class="line"></div>
-        </div>
-        {% endif %}
-    {% endfor %}
+   {% for entry in blog_entries %}
+   {% if entry.published or request.user.is_staff %}
+   <div class="row">
+      <div class="col-md-auto">
+         <a href="{% url 'blog' entry.pk %}"><img class="" src="{{ entry.thumbnail_url }}"
+            alt="{{ entry.title }}"></a>
+      </div>
+      <div class="col">
+         <h3><a href="{% url 'blog' entry.pk %}">{{ entry.title }}</a></h3>
+         <p>{{ entry.summary }}<a href="{% url 'blog' entry.pk %}"> ... read more</a></p>
+      </div>
+      {% if request.user.is_staff %}
+      Published: {{ entry.published }}
+      {% endif %}
+      <div class="line"></div>
+   </div>
+   {% endif %}
+   {% endfor %}
 </div>
 
 {% endblock %}

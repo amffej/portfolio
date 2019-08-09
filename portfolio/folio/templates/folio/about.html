@@ -2,7 +2,6 @@
 
 {% block title %}
 About - {{ entry.title }}
-
 {% endblock %}
 
 {% block body %}
@@ -31,13 +30,12 @@ About - {{ entry.title }}
 </script>
 {% endif %}
 <h2>
-  <div class="page_headline">{{ entry.title }}</div>
+   <div class="page_headline">{{ entry.title }}</div>
 </h2>
 {% if request.user.is_staff %}
 <button id="edit" class="btn btn-secondary" onclick="edit('.page_headline')" type="button">Edit</button>
 <button id="save" class="btn btn-secondary" onclick="save('.page_headline','title')" type="button">Save</button>
 {% endif %}
-
 <div class="page_body">{{ entry.body }}</div>
 {% if request.user.is_staff %}
 <button id="edit" class="btn btn-secondary" onclick="edit('.page_body')" type="button">Edit</button>
